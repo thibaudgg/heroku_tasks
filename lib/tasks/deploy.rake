@@ -2,7 +2,7 @@ namespace :deploy do
   
   desc "Prepare jammit assets before deploy"
   task :assets do
-    system "bundle exec jammit -u http://#{HerokuTasks.production_url} -f"
+    system "bundle exec jammit -u #{HerokuTasks.production_url} -f"
     
     files = ["public/assets/style.css","public/assets/style-datauri.css","public/assets/style-mhtml.css"]
     files.each do |file|

@@ -1,4 +1,4 @@
-git_repo: git@site.git
 staging: site-staging
 production: site
-production_url: site.com
+production_url: http://site.com # for jammit assets
+git_repo: git@site.git # for git tag
