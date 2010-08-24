@@ -49,7 +49,7 @@ namespace :deploy do
   
   task :push do
     timed do
-      puts "\nDeploying #{app_and_target} site to #{APP} on heroku/master ..."
+      puts "\nDeploying #{TARGET}'s branch to #{APP} on heroku ..."
       system "git push git@heroku.com:#{APP}.git #{TARGET}:master"
     end
   end
