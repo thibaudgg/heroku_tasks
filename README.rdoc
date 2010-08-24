@@ -22,7 +22,7 @@ Merge your last work in staging branch
     git checkout staging
     git merge master
 
-Regenerate your assets (if using jammit)
+Regenerate your assets if you're using {Jammit}[http://documentcloud.github.com/jammit/] (and you should)
 
     rake deploy:assets
 
@@ -37,7 +37,7 @@ If your staging app is still alive
     git checkout production
     git merge staging
 
-Active maintenance page on production and wait for it (Optional, in case of migrations)
+Activate maintenance page on production and wait for it (Optional, ie. with migrations)
 
     heroku maintenance:on --app production_app
 
