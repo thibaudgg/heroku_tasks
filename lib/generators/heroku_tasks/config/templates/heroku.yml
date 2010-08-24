@@ -1,0 +1,4 @@
+git_repo: git@site.git
+staging: site-staging
+production: site
+production_url: site.com

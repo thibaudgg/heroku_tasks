@@ -1,0 +1,65 @@
+= Installation
+
+Add it to your Gemfile (inside development group)
+
+    gem 'heroku_tasks', :git => 'git://github.com/thibaudgg/heroku_tasks.git'
+
+= Configuration
+
+Setup staging/production branch (here from remote)
+
+    git checkout -t origin/production
+    git checkout -t origin/staging
+
+Create config/heroku.yml file and edit it
+
+    rails generate heroku_tasks:config
+
+= Deploy procedure
+
+Merge your last work in staging branch
+
+    git checkout staging
+    git merge master
+
+Regenerate your assets (if using jammit)
+
+    rake deploy:assets
+
+Push your code to staging heroku app
+
+    rake deploy:staging
+    or
+    rake deploy:staging:migrations
+
+If your staging app is still alive
+
+    git checkout production
+    git merge staging
+
+Active maintenance page on production and wait for it (Optional, in case of migrations)
+
+    heroku maintenance:on --app production_app
+
+Push your code to production app
+
+    rake deploy:production
+    or
+    rake deploy:production:migrations
+
+Don't forget to remove maintenance page if needed
+
+    heroku maintenance:off --app production_app
+
+Back to work (after some rest!)
+
+    git checkout master
+    git merge production
+
+= Rollback
+
+If you met any problems
+
+    rake deploy:staging:rollback
+    or
+    rake deploy:production:rollback
