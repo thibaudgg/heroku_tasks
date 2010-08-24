@@ -1,3 +1,3 @@
 module HerokuTasks
-  # Your code goes here...
+  require 'lib/heroku_tasks/railtie' if defined?(Rails)
 end
