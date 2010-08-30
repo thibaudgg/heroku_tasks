@@ -36,6 +36,7 @@ Push your code to staging heroku app
 If your staging app is still alive
 
     git checkout production
+    git pull origin production
     git merge staging
 
 Activate maintenance page on production and wait for it (Optional, ie. with migrations)
@@ -55,7 +56,6 @@ Don't forget to remove maintenance page if needed
 Back to work (after some rest!)
 
     git checkout master
-    git pull origin production
     git merge production
 
 = Rollback
