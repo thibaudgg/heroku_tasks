@@ -20,6 +20,7 @@ Create config/heroku.yml file and edit it
 Merge your last work in staging branch
 
     git checkout staging
+    git pull origin staging
     git merge master
 
 Regenerate your assets if you're using {Jammit}[http://documentcloud.github.com/jammit/] (and you should)
@@ -54,6 +55,7 @@ Don't forget to remove maintenance page if needed
 Back to work (after some rest!)
 
     git checkout master
+    git pull origin production
     git merge production
 
 = Rollback
