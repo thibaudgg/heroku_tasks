@@ -4,8 +4,8 @@ namespace :deploy do
   task :assets do
     system "bundle exec jammit -u #{HerokuTasks.production_url} -f"
     
-    files = ["public/assets/style.css","public/assets/style-datauri.css","public/assets/style-mhtml.css"]
-    files.each do |file|
+    Dir.glob("public/assets/*.css").each do |file|
+      puts file
       buffer = File.new(file,'r').read.gsub(/@media screen and\(/,"@media screen and (")
       File.open(file,'w') {|fw| fw.write(buffer)}
     end

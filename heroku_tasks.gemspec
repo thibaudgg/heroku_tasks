@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = ">= 1.3.6"
   s.rubyforge_project         = "heroku_tasks"
 
-  s.add_development_dependency "bundler", ">= 1.0.0.rc.6"
+  s.add_development_dependency "bundler", "~> 1.0.0"
 
   s.files        = Dir.glob("{lib}/**/*") + %w[README.rdoc]
   s.require_path = 'lib'
