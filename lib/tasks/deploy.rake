@@ -78,6 +78,7 @@ namespace :deploy do
     timed do
       puts "\nCopying production database for #{app_and_target} ..."
       system "heroku db:pull postgres://localhost/#{HerokuTasks.production}_backup --app #{HerokuTasks.production}"
+      system "heroku db:reset --app #{HerokuTasks.staging}"
       system "heroku db:push postgres://localhost/#{HerokuTasks.production}_backup --app #{HerokuTasks.staging}"
     end
   end
