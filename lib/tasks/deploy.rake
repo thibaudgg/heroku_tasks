@@ -77,8 +77,6 @@ namespace :deploy do
   task :copy_production_db_to_staging do
     timed do
       puts "\nCopying production database for #{app_and_target} ..."
-      heroku db:pull postgres://localhost/msv_backup --app mysublime
-      
       system "heroku db:pull postgres://localhost/#{HerokuTasks.production}_backup --app #{HerokuTasks.production}"
       system "heroku db:push postgres://localhost/#{HerokuTasks.production}_backup --app #{HerokuTasks.staging}"
     end
