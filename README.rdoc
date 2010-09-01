@@ -35,6 +35,7 @@ Push your code to staging heroku app
 
 If your staging app is still alive
 
+    git push origin staging
     git checkout production
     git pull origin production
     git merge staging
@@ -55,8 +56,10 @@ Don't forget to remove maintenance page if needed
 
 Back to work (after some rest!)
 
+    git push origin production
     git checkout master
     git merge production
+    git push origin master
 
 = Rollback
 
