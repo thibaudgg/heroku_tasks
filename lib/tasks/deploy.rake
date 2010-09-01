@@ -21,7 +21,7 @@ namespace :deploy do
   
   namespace :staging do
     desc "Heroku staging (#{HerokuTasks.staging}) deploy with migration (and copy production db)"
-    task :migrations => [:set_staging_app, :push, :copy_production_db, :migrate, :restart, :tag]
+    task :migrations => [:set_staging_app, :push, :copy_production_db_to_staging, :migrate, :restart, :tag]
     desc "Heroku staging (#{HerokuTasks.staging}) rollback"
     task :rollback => [:set_staging_app, :rollback, :restart]
   end
@@ -74,11 +74,13 @@ namespace :deploy do
     end
   end
   
-  task :copy_production_db do
+  task :copy_production_db_to_staging do
     timed do
       puts "\nCopying production database for #{app_and_target} ..."
-      system "heroku db:pull sqlite://backup.db --app #{HerokuTasks.production}"
-      system "heroku db:push sqlite://backup.db --app #{APP}"
+      heroku db:pull postgres://localhost/msv_backup --app mysublime
+      
+      system "heroku db:pull postgres://localhost/#{HerokuTasks.production}_backup --app #{HerokuTasks.production}"
+      system "heroku db:push postgres://localhost/#{HerokuTasks.production}_backup --app #{HerokuTasks.staging}"
     end
   end
   
